@@ -1,0 +1,27 @@
+@model Login
+
+<div style="display: flex; justify-content: space-between;" class="jumbotron">
+    <h1>Login!</h1><br>
+    <!-- <a href="/"><button class="btn btn-info" style="margin-top: 50%;" >Register</button></a> -->
+</div>
+
+<p><span asp-validation-for="Email"></span></p>
+<p><span asp-validation-for="Password"></span></p><br>
+
+<form action="/userlogin" method="POST">
+    <div class="form-group row">
+        <label for="Email" class="col-sm-2 col-form-label" style="font-size: 1.5em;" >Email: </label>
+        <div class="col-sm-4">
+            <input type="email" name="Email" placeholder="Enter a valid Email!"class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="Password" class="col-sm-2 col-form-label" style="font-size: 1.5em;">Password: </label>
+        <div class="col-sm-4">
+            <input type="password" name="Password" placeholder="Enter a Strong Password!"class="form-control" />
+        </div>
+    </div>
+    <a href="/">Need to Register??</a><br><br>
+    <input type="submit" value="Login" class="btn btn-info" />
+</form>

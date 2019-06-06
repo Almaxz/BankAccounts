@@ -1,0 +1,35 @@
+@model Transaction
+
+<div style="display: flex; justify-content: space-between;" class="jumbotron">
+    <h2>Welcome, @ViewBag.User.FirstName</h2><br>
+    <a href="/logout"><button class="btn btn-info" style="margin-top: 1em;" >Logout</button></a>
+</div>
+
+<form action="/transactions" method="post">
+    <div class="form-group">
+        <label for="Amount">Deposit/Withdraw: </label>
+        <input name="Amount" class="form-control">
+        <input type="hidden" id="AccountId" name="Amount" value="@ViewBag.User.AccountId">
+        <span asp-validation-for="Amount"></span>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-success">
+</form>
+<div class="div">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in ViewBag.Transaction)
+            {
+                <tr>
+                    <td>$@t.Amount.ToString("0.00")</td>
+                    <td>@t.CreatedAt.ToString("MMM d yyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
